@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mineral Engenharia",
     description: "Soluções completas em infraestrutura de recarga para veículos elétricos. Rentabilize seu ativo corporativo.",
-    url: "https://seusite.com.br", // <-- COLOQUE A URL DO SEU SITE AQUI
+    url: "https://mineral-lp-virid.vercel.app/", 
     siteName: "Mineral Engenharia",
     images: [
       {
