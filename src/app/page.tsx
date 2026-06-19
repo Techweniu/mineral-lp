@@ -6,6 +6,7 @@ import { TurnkeyProcess } from "@/components/TurnkeyProcess";
 import { FAQ } from "@/components/FAQ";
 import { LeadForm } from "@/components/LeadForm";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -44,6 +45,8 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      <WhatsAppButton />
 
     </main>
   );
