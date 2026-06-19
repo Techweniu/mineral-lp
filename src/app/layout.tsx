@@ -34,6 +34,7 @@ const lemonMilk = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mineral-lp-virid.vercel.app"),
   title: "Mineral Engenharia",
   description: "Soluções completas em infraestrutura de recarga para veículos elétricos. Rentabilize seu ativo corporativo.",
   openGraph: {
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Mineral Engenharia",
     images: [
       {
-        url: "/images/logo-mineral-full.webp", 
+        url: "/images/og-mineral.png", 
         width: 1200,
         height: 630,
         alt: "Mineral Engenharia",
