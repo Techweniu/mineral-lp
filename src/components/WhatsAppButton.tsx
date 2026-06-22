@@ -13,7 +13,7 @@ export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   // Link de exemplo (inserir o número real depois)
-  const whatsappUrl = "https://wa.me/5534900000000?text=Olá,%20gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20projetos%20de%20recarga%20EV.";
+  const whatsappUrl = "https://wa.me/553433051339?text=Olá,%20gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20projetos%20de%20recarga%20EV.";
 
   return (
     <div 

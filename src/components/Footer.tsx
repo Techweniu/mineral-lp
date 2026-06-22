@@ -39,11 +39,10 @@ export function Footer() {
                 />
                 <span className="font-heading font-bold text-2xl text-white tracking-tight">MINERAL ENGENHARIA</span>
               </div>
-              <span className="text-sm text-slate-400 font-medium">Mineral Engenharia e Infraestrutura Ltda.</span>
-              <span className="text-sm text-slate-400 font-medium">CNPJ: 00.000.000/0001-00</span>
+              <span className="text-sm text-slate-400 font-medium">MINERAL PROJETOS E CONSULTORIA ENERGETICA LTDA</span>
+              <span className="text-sm text-slate-400 font-medium">CNPJ: 49.088.664/0001-43</span>
             </div>
             
-            {/* Links das Redes Sociais Atualizados */}
             <div className="flex items-center gap-4 mb-6">
               <a 
                 href="https://www.instagram.com/mineralgestaoenergetica/" 
@@ -75,15 +74,15 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" />
-                <span>Centro Empresarial<br/>Uberlândia - MG, 38400-000</span>
+                <span>Av. Iraque, 370 - Sala 01 Loja<br/>Loteamento Botânico<br/>Uberlândia - MG, 38410-663</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 shrink-0 text-slate-500" />
-                <span>contato@mineralengenharia.com.br</span>
+                <span>comercial@mineralprojetoeconsultoria.com.br</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 shrink-0 text-slate-500" />
-                <span>(34) 3000-0000</span>
+                <span>(34) 3305-1339</span>
               </li>
             </ul>
           </div>
@@ -121,7 +120,7 @@ export function Footer() {
                     </DialogHeader>
                     <div className="text-sm text-slate-600 space-y-4 mt-4">
                       <p><strong>1. Coleta de Dados:</strong> Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), informamos que a coleta de dados tem a finalidade exclusiva de processar a viabilidade técnica da implementação de infraestrutura.</p>
-                      <p><strong>2. Uso e Compartilhamento:</strong> Os dados coletados não serão comercializados. Eles serão armazenados na infraestrutura de gestão (CRM) da Mineral Engenharia para contato estrito de vendas e engenharia.</p>
+                      <p><strong>2. Uso e Compartilhamento:</strong> Os dados coletados não serão comercializados. Eles serão armazenados na infraestrutura de gestão da Mineral Engenharia para contato estrito de vendas e engenharia.</p>
                       <p><strong>3. Base Legal:</strong> O tratamento de dados é realizado sob a base legal do legítimo interesse comercial, mediante o consentimento ativo no ato da submissão do formulário.</p>
                       <p><strong>4. Retenção e Exclusão:</strong> Os dados serão mantidos em base segura pelo tempo necessário para a efetivação do contato comercial. O titular poderá solicitar a exclusão através do e-mail de contato oficial.</p>
                     </div>
@@ -133,7 +132,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium">
-          <p>© {new Date().getFullYear()} Mineral Engenharia e Infraestrutura Ltda. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} MINERAL PROJETOS E CONSULTORIA ENERGETICA LTDA. Todos os direitos reservados.</p>
           <p className="text-slate-500">
             Desenvolvido por <a href="https://weniu.com.br" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors underline decoration-slate-700 underline-offset-4">weniu</a>
           </p>
