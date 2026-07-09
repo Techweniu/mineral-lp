@@ -12,8 +12,13 @@ const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Link de exemplo (inserir o número real depois)
   const whatsappUrl = "https://wa.me/553499466334?text=Olá,%20gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20projetos%20de%20recarga%20EV.";
+
+  const handleClick = () => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "Contact");
+    }
+  };
 
   return (
     <div 
@@ -39,6 +44,7 @@ export function WhatsAppButton() {
         {/* Botão Principal */}
         <a
           href={whatsappUrl}
+          onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer"
           className="relative inline-flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20b858] text-white rounded-full shadow-lg transition-transform transform hover:scale-110"

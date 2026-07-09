@@ -50,6 +50,9 @@ export function LeadForm() {
     if (response.error) {
       setSubmitStatus({ success: false, message: response.error });
     } else {
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Lead");
+      }
       setSubmitStatus({ success: true, message: "Solicitação enviada para nossa engenharia." });
       form.reset();
     }

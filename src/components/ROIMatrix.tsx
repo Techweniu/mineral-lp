@@ -1,8 +1,33 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { Calculator, ArrowRight, Wallet, Zap, Clock, ShieldCheck } from "lucide-react";
 
 export function ROIMatrix() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (typeof window !== "undefined" && window.fbq) {
+            window.fbq("track", "ViewContent");
+          }
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="w-full py-32 bg-slate-900 text-white relative overflow-hidden">
+    <section ref={sectionRef} className="w-full py-32 bg-slate-900 text-white relative overflow-hidden">
       {/* Background de engenharia estrito */}
       <div className="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       
