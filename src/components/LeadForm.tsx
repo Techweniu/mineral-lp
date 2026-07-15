@@ -50,8 +50,14 @@ export function LeadForm() {
     if (response.error) {
       setSubmitStatus({ success: false, message: response.error });
     } else {
-      if (typeof window !== "undefined" && window.fbq) {
-        window.fbq("track", "Lead");
+      if (typeof window !== "undefined") {
+        if (typeof window.fbq === "function") {
+          console.info("[Pixel Meta] Registrando evento 'Lead'...");
+          window.fbq("track", "Lead");
+          console.info("[Pixel Meta] Evento 'Lead' registrado com sucesso!");
+        } else {
+          console.warn("[Pixel Meta] AVISO: 'window.fbq' não encontrado. O Pixel não carregou na página ou foi bloqueado por alguma extensão.");
+        }
       }
       setSubmitStatus({ success: true, message: "Solicitação enviada para nossa engenharia." });
       form.reset();

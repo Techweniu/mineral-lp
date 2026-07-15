@@ -62,6 +62,33 @@ export async function processLead(data: LeadFormData) {
       return { error: "Falha ao registrar oportunidade no CRM." };
     }
 
+    // --- NOVA VERIFICAÇÃO/ARMAZENAMENTO LOCAL ---
+    // Salva um log local em arquivo para garantir que você possa verificar os leads independentemente do Pixel ou do CRM.
+    try {
+      const fs = require("fs");
+      const path = require("path");
+      
+      const logEntry = {
+        timestamp: new Date().toISOString(),
+        leadData: validatedFields.data,
+      };
+      
+      const logFilePath = path.join(process.cwd(), "leads-log.json");
+      
+      let existingLogs = [];
+      if (fs.existsSync(logFilePath)) {
+        const fileContent = fs.readFileSync(logFilePath, "utf8");
+        existingLogs = JSON.parse(fileContent);
+      }
+      
+      existingLogs.push(logEntry);
+      fs.writeFileSync(logFilePath, JSON.stringify(existingLogs, null, 2), "utf8");
+    } catch (logError) {
+      console.error("Falha ao salvar log local do lead:", logError);
+      // Não retorna erro para o usuário pois o lead já foi salvo no CRM.
+    }
+    // ---------------------------------------------
+
     return { success: true };
 
   } catch (error) {
