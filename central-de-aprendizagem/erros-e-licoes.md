@@ -8,13 +8,13 @@
 **Correção aplicada:** Registro na Central de Aprendizagem (PASSO 1), elaboração do draft de projeto via equipe de subagentes e reconstrução modular de todas as seções (Navbar, Hero, MarketOpportunity, ROIMatrix, TurnkeyProcess, LeadForm, FAQ e Footer) com tipografia editorial refinada, layouts bento assimétricos e paleta oficial.
 **Lição:** Aplicar os critérios da `taste-skill` em **todas** as seções da página de forma integrada (não apenas no Hero), garantindo visual único, ritmo de grid variável e zero clichês.
 
-## 📅 [24/07/2026] — Resolução de raiz de workspace no Turbopack (Next.js 16)
+## 📅 [24/07/2026] — Sintaxe do Turbopack root no Next.js 16
 
-**Contexto:** Execução do build do Next.js via CLI local (`npx next build`).
-**Erro:** O Turbopack no Next.js 16 não conseguia inferir o diretório raiz do projeto sem a propriedade `turbopack.root` em `next.config.ts`.
-**Consequência:** Falha ao compilar o projeto em ambientes sem `node_modules` locais pré-instalados.
-**Correção aplicada:** Adicionada a propriedade `experimental: { turbopack: { root: __dirname } }` em `next.config.ts`.
-**Lição:** Em projetos Next.js 16 usando Turbopack, declarar explicitamente a raiz do projeto no `next.config.ts` para evitar erros de resolução de diretório em builds locais e remotos.
+**Contexto:** Ajuste de compilação da raiz do workspace no `next.config.ts`.
+**Erro:** O Turbopack no Next.js 16 aceita `turbopack: { root: __dirname }` no nível superior da configuração (fora de `experimental`).
+**Consequência:** A sintaxe direta é mais estável e limpa.
+**Correção aplicada:** Atualizada a declaração no [next.config.ts](file:///c:/Users/LuisG/Projetos/mineral-lp-main/next.config.ts) para usar `turbopack: { root: __dirname }` diretamente.
+**Lição:** Manter `turbopack.root` no nível raiz do objeto `nextConfig`.
 
 ## 📅 [24/07/2026] — Correção de codebase e alinhamento total ao projeto Mineral LP
 
