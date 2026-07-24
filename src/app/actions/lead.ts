@@ -10,60 +10,32 @@ export async function processLead(data: LeadFormData) {
   }
 
   try {
-    const API_TOKEN = process.env.SOLARMARKET_TOKEN;
-    const RESPONSIBLE_ID = process.env.SOLARMARKET_RESPONSIBLE_ID;
+    const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || "https://n8n.srv966092.hstgr.cloud/webhook/273dc2f8-8088-450b-a032-780bd2047915";
 
-    if (!API_TOKEN || !RESPONSIBLE_ID) {
-      return { error: "Falha na configuração da infraestrutura." };
-    }
-
-    const responsibleIdNum = parseInt(RESPONSIBLE_ID, 10);
-
-    // 1. Autenticação REST
-    const authResponse = await fetch("https://business.solarmarket.com.br/api/v2/auth/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: API_TOKEN }),
-    });
-
-    if (!authResponse.ok) return { error: "Falha de autenticação." };
-    const authData = await authResponse.json();
-    const accessToken = authData.access_token;
-
-    // 2. Criação REST com Roteamento Integrado
-    const rawDescription = `LP. CNPJ:${validatedFields.data.cnpj} Ponto:${validatedFields.data.pointType} CapEx:${validatedFields.data.investmentCapital}`;
-    const safeDescription = rawDescription.substring(0, 100);
-
-    const projectPayload = {
-      name: `Lead Site: ${validatedFields.data.name}`,
-      description: safeDescription,
-      responsibleId: responsibleIdNum,
-      stageId: 117632, // Injeção documentada pelo suporte técnico
-      client: {
-        name: validatedFields.data.name,
-        email: validatedFields.data.email,
-        primaryPhone: validatedFields.data.phone,
-        cnpjCpf: validatedFields.data.cnpj,
-        responsibleId: responsibleIdNum,
-      }
+    const payload = {
+      name: validatedFields.data.name,
+      email: validatedFields.data.email,
+      phone: validatedFields.data.phone,
+      company: `CNPJ: ${validatedFields.data.cnpj}`,
+      parkingType: validatedFields.data.pointType || "Não informado",
+      message: `CapEx: ${validatedFields.data.investmentCapital || "Não informado"} | Ponto: ${validatedFields.data.pointType || "Não informado"}`,
+      cnpj: validatedFields.data.cnpj,
+      investmentCapital: validatedFields.data.investmentCapital,
+      pointType: validatedFields.data.pointType
     };
 
-    const projectResponse = await fetch("https://business.solarmarket.com.br/api/v2/projects", {
+    const response = await fetch(N8N_WEBHOOK_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify(projectPayload),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
 
-    if (!projectResponse.ok) {
-      console.error("Falha na gravação REST:", await projectResponse.text());
-      return { error: "Falha ao registrar oportunidade no CRM." };
+    if (!response.ok) {
+      console.error("Falha ao enviar lead para o webhook n8n:", await response.text());
+      return { error: "Falha ao registrar oportunidade no n8n." };
     }
 
-    // --- NOVA VERIFICAÇÃO/ARMAZENAMENTO LOCAL ---
-    // Salva um log local em arquivo para garantir que você possa verificar os leads independentemente do Pixel ou do CRM.
+    // --- ARMAZENAMENTO LOCAL DE BACKUP ---
     try {
       const fs = require("fs");
       const path = require("path");
@@ -85,9 +57,8 @@ export async function processLead(data: LeadFormData) {
       fs.writeFileSync(logFilePath, JSON.stringify(existingLogs, null, 2), "utf8");
     } catch (logError) {
       console.error("Falha ao salvar log local do lead:", logError);
-      // Não retorna erro para o usuário pois o lead já foi salvo no CRM.
     }
-    // ---------------------------------------------
+    // -------------------------------------
 
     return { success: true };
 
