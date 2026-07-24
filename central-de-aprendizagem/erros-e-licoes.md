@@ -1,5 +1,13 @@
 # 🧠 Central de Aprendizagem — Erros & Lições (Mineral LP)
 
+## 📅 [24/07/2026] — Reformulação total da Landing Page Mineral LP (Anti-Slop Estrito)
+
+**Contexto:** Solicitação do usuário para aplicar as diretrizes `/design-taste-frontend` e `/clone-website` reconstruindo uma LP completamente nova, 100% livre de AI Slop, preservando a totalidade dos textos e funções originais da Mineral Engenharia (WEG).
+**Erro:** O componente `HeroSection` alterado anteriormente ainda mantinha vícios ou estruturas com sensação de template genérico de IA.
+**Consequência:** A página não atingia a qualidade visual artesanal e profissional desejada.
+**Correção aplicada:** Registro na Central de Aprendizagem (PASSO 1), elaboração do draft de projeto via equipe de subagentes e reconstrução modular de todas as seções (Navbar, Hero, MarketOpportunity, ROIMatrix, TurnkeyProcess, LeadForm, FAQ e Footer) com tipografia editorial refinada, layouts bento assimétricos e paleta oficial.
+**Lição:** Aplicar os critérios da `taste-skill` em **todas** as seções da página de forma integrada (não apenas no Hero), garantindo visual único, ritmo de grid variável e zero clichês.
+
 ## 📅 [24/07/2026] — Resolução de raiz de workspace no Turbopack (Next.js 16)
 
 **Contexto:** Execução do build do Next.js via CLI local (`npx next build`).
