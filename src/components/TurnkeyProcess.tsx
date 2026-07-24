@@ -29,29 +29,43 @@ export function TurnkeyProcess() {
   ];
 
   return (
-    <section className="w-full py-32 bg-slate-50 border-t border-slate-200">
+    <section id="solucoes" className="w-full py-24 bg-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-            Processo de Implantação Completa
-          </h2>
-          <p className="text-lg text-slate-600 font-medium max-w-2xl">
-            Você disponibiliza o espaço e o capital. Nossa equipe executa toda a operação, do projeto inicial até a máquina começar a faturar.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="font-heading text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+              Processo de Implantação Completa
+            </h2>
+            <p className="text-lg text-slate-600 font-medium">
+              Você disponibiliza o espaço e o capital. Nossa equipe executa toda a operação, do projeto inicial até a máquina começar a faturar.
+            </p>
+          </div>
+          <div className="hidden md:block">
+            <div className="px-4 py-2 bg-slate-900 text-white font-bold text-sm tracking-widest uppercase">
+              Turnkey 360°
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8 relative">
-          {/* Linha conectora oculta em mobile */}
-          <div className="hidden md:block absolute top-12 left-12 right-12 h-0.5 bg-slate-200 z-0"></div>
-
-          {steps.map((step) => (
-            <div key={step.id} className="relative z-10 flex flex-col items-start">
-              <div className="w-16 h-16 rounded-2xl bg-white border-2 border-slate-200 shadow-sm flex items-center justify-center mb-6">
-                <step.icon className="w-8 h-8 text-mineral-blue" />
+        <div className="grid md:grid-cols-4 gap-x-8 gap-y-12">
+          {steps.map((step, idx) => (
+            <div key={step.id} className="relative flex flex-col group">
+              {/* Top border indicator */}
+              <div className="h-1 w-full bg-slate-100 mb-8 relative">
+                <div className={`absolute top-0 left-0 h-full bg-mineral-blue transition-all duration-500 w-0 group-hover:w-full`}></div>
+                {/* Fixed marker */}
+                <div className="absolute -top-1.5 left-0 w-4 h-4 bg-slate-900"></div>
               </div>
-              <div className="text-sm font-black text-slate-300 mb-2">FASE {step.id}</div>
-              <h3 className="font-heading text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{step.description}</p>
+              
+              <div className="mb-6 flex justify-between items-start">
+                <span className="text-4xl font-black text-slate-200 group-hover:text-mineral-orange transition-colors">
+                  {step.id}
+                </span>
+                <step.icon className="w-6 h-6 text-slate-400 group-hover:text-mineral-blue transition-colors" />
+              </div>
+              
+              <h3 className="font-heading text-xl font-bold text-slate-900 mb-4">{step.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
