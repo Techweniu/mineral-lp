@@ -1,5 +1,13 @@
 # 🧠 Central de Aprendizagem — Erros & Lições (Mineral LP)
 
+## 📅 [24/07/2026] — Resolução de raiz de workspace no Turbopack (Next.js 16)
+
+**Contexto:** Execução do build do Next.js via CLI local (`npx next build`).
+**Erro:** O Turbopack no Next.js 16 não conseguia inferir o diretório raiz do projeto sem a propriedade `turbopack.root` em `next.config.ts`.
+**Consequência:** Falha ao compilar o projeto em ambientes sem `node_modules` locais pré-instalados.
+**Correção aplicada:** Adicionada a propriedade `experimental: { turbopack: { root: __dirname } }` em `next.config.ts`.
+**Lição:** Em projetos Next.js 16 usando Turbopack, declarar explicitamente a raiz do projeto no `next.config.ts` para evitar erros de resolução de diretório em builds locais e remotos.
+
 ## 📅 [24/07/2026] — Correção de codebase e alinhamento total ao projeto Mineral LP
 
 **Contexto:** O usuário forneceu o repositório oficial da Landing Page Mineral Engenharia (`https://github.com/Techweniu/mineral-lp/tree/main`).
